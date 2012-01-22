@@ -4,6 +4,8 @@ SampleApp::Application.routes.draw do
   resources :options
 
   resources :questions
+  
+  match '/startHunt',   :to =>  'questions#landingShow'
 
   get "pages/home"
 

@@ -1,6 +1,36 @@
-<h1>Sample App</h1>
-<p>
-  Welcome to the home page for the all exciting treasure hunt! A hunt that will eventually reveal the biggest news of 2012 to the worthy league members. Follow the different clues to reach the holygrail ;)
-  <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<html>
+   <head>
+     <title>The League Treasure Hunt!! Hunt for the holygrail 2012</title>
+   </head>
+   <body>
+     <div id="fb-root"></div>
+     <script>
+       window.fbAsyncInit = function() {
+         FB.init({
+           appId      : '284922238186472',
+           status     : true, 
+           cookie     : true,
+           xfbml      : true,
+           oauth      : true,
+         });
+       };
+       (function(d){
+          var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+          js = d.createElement('script'); js.id = id; js.async = true;
+          js.src = "//connect.facebook.net/en_US/all.js";
+          d.getElementsByTagName('head')[0].appendChild(js);
+        }(document));
+     </script>
+     <div class="fb-login-button" data-scope="email,user_checkins">
+       Login with Facebook
+     </div>
+	<p>
+	  Welcome to the home page for the all exciting treasure hunt! A hunt that will eventually reveal the biggest news of 2012 to the worthy league members. Follow the different clues to reach the holygrail ;)
+	  <a href="/startHunt">Start here</a>
+	  sample application.
+	</p>
+   </body>
+</html>
+
+
+
