@@ -1,34 +1,19 @@
 <html>
    <head>
      <title>The League Treasure Hunt!! Hunt for the holygrail 2012</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" language="javascript"></script>
+	
    </head>
    <body>
      <div id="fb-root"></div>
-     <script>
-       window.fbAsyncInit = function() {
-         FB.init({
-           appId      : '284922238186472',
-           status     : true, 
-           cookie     : true,
-           xfbml      : true,
-           oauth      : true,
-         });
-       };
-       (function(d){
-          var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-          js = d.createElement('script'); js.id = id; js.async = true;
-          js.src = "//connect.facebook.net/en_US/all.js";
-          d.getElementsByTagName('head')[0].appendChild(js);
-        }(document));
-     </script>
-     <div class="fb-login-button" data-scope="email,user_checkins">
+
+     <div class="fb-login-button" data-scope="email" onlogin="location.href = '/questions'">
        Login with Facebook
      </div>
-	<p>
-	  Welcome to the home page for the all exciting treasure hunt! A hunt that will eventually reveal the biggest news of 2012 to the worthy league members. Follow the different clues to reach the holygrail ;)
-	  <a href="/startHunt">Start here</a>
-	  sample application.
-	</p>
+	<div>
+	  Welcome to the home page for the all exciting treasure hunt! A hunt that will eventually reveal the biggest news of 2012 to the worthy league members. Follow the different clues to reach the holygrail ;). Login using your facebook id and start the quest!
+	  <!--<a href="/startHunt">Start here</a> -->
+	</div>
    </body>
 </html>
 
