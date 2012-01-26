@@ -6,7 +6,7 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
-gem 'pg'
+#gem 'pg'
 
 gem 'json'
 
@@ -25,6 +25,11 @@ end
 group :test do
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
+end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
 end
 
 
