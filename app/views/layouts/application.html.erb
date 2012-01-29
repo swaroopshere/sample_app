@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SampleApp</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>The League Treasure Hunt!! Hunt for the holygrail 2012 | <%= @title %></title>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+<div id="fb-root"></div>
+ <script>
+   window.fbAsyncInit = function() {
+   FB.init({appId: '284922238186472',
+            status: true,
+            cookie: true,
+            xfbml: true});
+           };
+   (function() {
+     var e = document.createElement('script');
+     e.type = 'text/javascript';
+     e.src = //document.location.protocol +
+     'http://connect.facebook.net/en_US/all.js';
+     e.async = true;
+     document.getElementById('fb-root').appendChild(e);
+   }());
+	FB.getLoginStatus(function(response) {
+	  if (response.session) {
+	    // logged in and connected user, someone you know
+	    alert('Welcome! Facebook user.');
+		var uid = response.authResponse.userID;
+		var accessToken = response.authResponse.accessToken;
+	  } else {
+	    // no user session available, someone you dont know
+	    alert('Who are you?');
+	    window.location = "/pages/home"
+	  }
+	});
+ </script>
 </html>
