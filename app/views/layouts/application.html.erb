@@ -18,7 +18,7 @@
 		
 		//After FB init check the user is logged in or not
 		FB.getLoginStatus(function(response) {
-		  if (response.session) {
+		  if (response.status == "connected") {
 		    // logged in and connected user, someone you know
 		    alert('Welcome! Facebook user.');
 			TreasureHunt.uid = response.authResponse.userID;
