@@ -27,8 +27,8 @@
 	  if (response.session) {
 	    // logged in and connected user, someone you know
 	    alert('Welcome! Facebook user.');
-		var uid = response.authResponse.userID;
-		var accessToken = response.authResponse.accessToken;
+		TreasureHunt.uid = response.authResponse.userID;
+		TreasureHunt.accessToken = response.authResponse.accessToken;
 	  } else {
 	    // no user session available, someone you dont know
 	    alert('Who are you?');
