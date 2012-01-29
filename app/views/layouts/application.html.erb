@@ -10,11 +10,27 @@
 <div id="fb-root"></div>
  <script>
    window.fbAsyncInit = function() {
-   FB.init({appId: '284922238186472',
-            status: true,
-            cookie: true,
-            xfbml: true});
-           };
+   		FB.init({appId: '284922238186472',
+       		status: true,
+       		cookie: true,
+       		xfbml: true
+		});
+		
+		//After FB init check the user is logged in or not
+		FB.getLoginStatus(function(response) {
+		  if (response.session) {
+		    // logged in and connected user, someone you know
+		    alert('Welcome! Facebook user.');
+			TreasureHunt.uid = response.authResponse.userID;
+			TreasureHunt.accessToken = response.authResponse.accessToken;
+		  } else {
+		    // no user session available, someone you dont know
+		    alert('Who are you?');
+		    window.location = "/pages/home"
+		  }
+		});
+	
+   };
    (function() {
      var e = document.createElement('script');
      e.type = 'text/javascript';
@@ -23,17 +39,5 @@
      e.async = true;
      document.getElementById('fb-root').appendChild(e);
    }());
-	FB.getLoginStatus(function(response) {
-	  if (response.session) {
-	    // logged in and connected user, someone you know
-	    alert('Welcome! Facebook user.');
-		TreasureHunt.uid = response.authResponse.userID;
-		TreasureHunt.accessToken = response.authResponse.accessToken;
-	  } else {
-	    // no user session available, someone you dont know
-	    alert('Who are you?');
-	    window.location = "/pages/home"
-	  }
-	});
  </script>
 </html>
