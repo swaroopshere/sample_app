@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
   end
   
   def landingShow
-    @fbuser = User.find_by_fbUser(params[:id])
+    @fbuser = User.find_by_fbUser(params[:email])
     if @fbUser.nil?
       @fbUser=User.new() #TODO - add appropriate parameters
       @fbUser.save      
