@@ -31,8 +31,9 @@
 				});
 				TreasureHunt.uid = response.authResponse.userID;
 				TreasureHunt.accessToken = response.authResponse.accessToken;
-				document.getElementById("hiddenName").value = TreasureHunt.email;
-				document.form.hiddenUserInformation.submit();
+				if(onSuccess){ // call custom callback function on a given page
+					onSuccess();
+				}
 			  } else {
 				//if not authorized, return to the login page
 				if(window.location.href.indexOf("/pages/home") == -1){
@@ -55,7 +56,4 @@
      document.getElementById('fb-root').appendChild(e);
    }());
  </script>
-<form id = "hiddenUserInformation" name = "hiddenUserInformation" action ="/questions/landingShow" method="post">
-	<input id  = "hiddenName" type="hidden" name="email">
-</form>
 </html>
