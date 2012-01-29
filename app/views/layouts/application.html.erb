@@ -20,7 +20,12 @@
 		FB.getLoginStatus(function(response) {
 		  if (response.status == "connected") {
 		    // logged in and connected user, someone you know
-		    alert('Welcome! Facebook user.');
+		    //alert('Welcome! Facebook user.');
+			FB.api('/me', function(response) {
+			  alert('Your name is ' + response.name);
+			  TreasureHunt.userName = response.name;
+			  TreasureHunt.email = response.email;
+			});
 			TreasureHunt.uid = response.authResponse.userID;
 			TreasureHunt.accessToken = response.authResponse.accessToken;
 		  } else {
