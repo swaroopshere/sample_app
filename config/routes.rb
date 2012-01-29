@@ -1,6 +1,5 @@
 SampleApp::Application.routes.draw do
   
-   SampleApp::Application.routes.draw do
   resources :users
   resources :options
   resources :questions
