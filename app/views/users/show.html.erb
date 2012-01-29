@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fbuser:</b>
+  <%= @user.fbUser %>
+</p>
+
+<p>
+  <b>Current question:</b>
+  <%= @user.current_question_id %>
+</p>
+
+<p>
+  <b>Isadmin:</b>
+  <%= @user.isAdmin %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

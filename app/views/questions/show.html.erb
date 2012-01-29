@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @question.text %>
+</p>
+
+<p>
+  <b>Sequencenumber:</b>
+  <%= @question.sequenceNumber %>
+</p>
+<br/>
+<div class='optionsList'>
+		<% if !@options.nil? %>
+			<% @options.each do |option| %>
+				<input type="radio" name="radioOption"> &nbsp; <%= option.text %><br/>
+				<% end %>
+		<% end %>
+</div>
+<div>
+	<h3>Add Option</h3>
+	<form method="post" action="/options">
+		<input name="option[text]" type="text">
+		<input name="option[question_id]" type="hidden" value='<%= @question.id %>'>
+		<input name="addOption" type="submit" value="Add Option">
+	</form>
+</div>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
