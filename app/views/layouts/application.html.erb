@@ -19,21 +19,29 @@
 		
 		//After FB init check the user is logged in or not
 		FB.getLoginStatus(function(response) {
-		  if (response.status == "connected") {
-			//if logged in, retrieve username and email
-			FB.api('/me', function(response) {
-			  alert('Your name is ' + response.name);
-			  TreasureHunt.userName = response.name;
-			  TreasureHunt.email = response.email;
-			});
-			TreasureHunt.uid = response.authResponse.userID;
-			TreasureHunt.accessToken = response.authResponse.accessToken;
-		  } else {
-			//if not authorized, return to the login page
-			if(window.location.href.indexOf("/pages/home") == -1){
-				window.location = "pages/home";
+			if(response){
+				if (response.status == "connected") {
+				//if logged in, retrieve username and email
+				FB.api('/me', function(response) {
+					if(response){
+					  alert('Your name is ' + response.name);
+					  TreasureHunt.userName = response.name;
+					  TreasureHunt.email = response.email;
+					}
+				});
+				TreasureHunt.uid = response.authResponse.userID;
+				TreasureHunt.accessToken = response.authResponse.accessToken;
+			  } else {
+				//if not authorized, return to the login page
+				if(window.location.href.indexOf("/pages/home") == -1){
+					window.location = "pages/home";
+				}
+			  }
+			}else{
+				if(window.location.href.indexOf("/pages/home") == -1){
+					window.location = "pages/home";
+				}
 			}
-		  }
 		});
 	
    };
