@@ -128,11 +128,12 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if(@answer == @userAnswer)
-        format.json { render :json => "{'isCorrect':true}" }
-        return
+        format.html { render :text => "success" }
+      else
+        format.html { redirect_to questions_url }
+        format.json { head :ok }
       end
-      format.html { redirect_to questions_url }
-      format.json { head :ok }
+
     end
   end
 end
