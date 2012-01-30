@@ -32,7 +32,7 @@
 				TreasureHunt.uid = response.authResponse.userID;
 				TreasureHunt.accessToken = response.authResponse.accessToken;
 				if(onSuccess){ // call custom callback function on a given page
-					onSuccess();
+					onSuccess(TreasureHunt);
 				}
 			  } else {
 				//if not authorized, return to the login page
