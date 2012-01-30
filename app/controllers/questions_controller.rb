@@ -129,7 +129,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if(@answer == @userAnswer)
-        @data = {isCorrect:true, url:url_for(@nextQuestion)}
+        @data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         format.json { render :json => @data }
         
       else
