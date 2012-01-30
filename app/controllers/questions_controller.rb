@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
     #    return question 1
     # end if 
     @question = Question.find(params[:id])
+    @user = User.find_by_fbUser(params[:email])
     #@question = Question.find_by_text(params[:id])
     
     @options = Option.find_all_by_question_id(params[:id])
@@ -52,7 +53,7 @@ class QuestionsController < ApplicationController
     else
       @question = Question.find(@user.current_question_id)
     end
-    redirect_to @question
+    redirect_to @question :email =>@user.fbUser
      #respond_to do |format|
        #format.html { redirect_to @question, :notice => 'Question for you' }
        #format.json { render :json => @question, :status => :next, :location => @question  }

@@ -22,6 +22,9 @@
 	<form method="post" action="/options">
 		<input name="option[text]" type="text">
 		<input name="option[question_id]" type="hidden" value='<%= @question.id %>'>
+		<% if @user.isAdmin == true %>
+			<% "<input name=\"addOption\" type=\"submit\" value=\"Add Option\">" %>
+		<% end%>
 		<input name="addOption" type="submit" value="Add Option">
 	</form>
 </div>
@@ -29,3 +32,4 @@
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+<%= link_to ''%>
