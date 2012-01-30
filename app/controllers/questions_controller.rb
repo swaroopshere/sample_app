@@ -53,9 +53,8 @@ class QuestionsController < ApplicationController
       @question = Question.find(@user.current_question_id)
     end
 
-
-  format.html { redirect_to @question }
-  format.json { render :json => @question }
+  format.html { redirect_to @question, :notice => 'Question for you' }
+  format.json { render :json => @question, :status => :next, :location => @question  }
   end
 
 
