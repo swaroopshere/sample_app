@@ -34,7 +34,11 @@
 	$(document).ready(function(){
 		$("#checkAnswerButton").click(function(){
 			$.ajax({
-				url:"/checkAnswer", type: "POST", dataType: "json", data: {id:<%= @question.id %>, answer: $("input[name='radioOption']").val(), success:function(data){
+				url:"/checkAnswer"
+				, type: "POST"
+				, dataType: "json"
+				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']").val()}
+				, success:function(data){
 					if(data){
 						if(data.isCorrect){
 							alert("Its the right answer!!");
@@ -45,9 +49,8 @@
 					}
 				}, error:function(){
 					alert("Error occurred");
-				}}
-				
-			})
+				}
+			});
 		})
 	})
 </script>
