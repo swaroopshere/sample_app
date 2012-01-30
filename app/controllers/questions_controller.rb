@@ -37,6 +37,8 @@ class QuestionsController < ApplicationController
     @question = @firstQuestion
     if @firstQuestion.nil?
       redirect_to "/pages/home"
+      return
+    else
       
     end
 
