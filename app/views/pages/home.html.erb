@@ -2,7 +2,7 @@
 	function onSuccess(TreasureHunt){
 		document.getElementById("hiddenName").value = TreasureHunt.email;
 		document.forms.hiddenUserInformation.submit();
-		alert(TreasureHunt.email);
+		alert("In home.html.erb" + TreasureHunt.email);
 	}
 </script>    
 <div class="fb-login-button" data-scope="email" onlogin="location.href = '/pages/home';">
