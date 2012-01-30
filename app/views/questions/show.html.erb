@@ -41,10 +41,10 @@
 				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']:checked").val()}
 				, success: function(data){
 					if(data && data.isCorrect){
-						alert("Correct answer");
+						//alert("Correct answer");
 						window.location = data.url;
 					}else{
-						alert("wrong answer")
+						//alert("wrong answer")
 					}
 				}
 				, error: function(error){
@@ -55,6 +55,7 @@
 		});
 	})
 </script>
+<% if @user.isAdmin? %>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
-<%= link_to ''%>
+<% end%>

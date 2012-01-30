@@ -24,7 +24,7 @@
 				//if logged in, retrieve username and email
 				FB.api('/me', function(userData) {
 					if(userData){
-					  alert('In application.html.erb. Your name is ' + userData.name);
+					  //alert('In application.html.erb. Your name is ' + userData.name);
 					  TreasureHunt.userName = userData.name;
 					  TreasureHunt.email = userData.email;					
 					TreasureHunt.uid = response.authResponse.userID;
