@@ -22,18 +22,21 @@
 			if(response){
 				if (response.status == "connected") {
 				//if logged in, retrieve username and email
-				FB.api('/me', function(response) {
-					if(response){
-					  alert('Your name is ' + response.name);
-					  TreasureHunt.userName = response.name;
-					  TreasureHunt.email = response.email;
+				FB.api('/me', function(userData) {
+					if(userData){
+					  alert('Your name is ' + userData.name);
+					  TreasureHunt.userName = userData.name;
+					  TreasureHunt.email = userData.email;					
+					TreasureHunt.uid = response.authResponse.userID;
+					TreasureHunt.accessToken = response.authResponse.accessToken;
+					  if(onSuccess){ // call custom callback function on a given page
+						onSuccess(TreasureHunt);
+					  }
 					}
 				});
 				TreasureHunt.uid = response.authResponse.userID;
 				TreasureHunt.accessToken = response.authResponse.accessToken;
-				if(onSuccess){ // call custom callback function on a given page
-					onSuccess(TreasureHunt);
-				}
+				
 			  } else {
 				//if not authorized, return to the login page
 				if(window.location.href.indexOf("/pages/home") == -1){
