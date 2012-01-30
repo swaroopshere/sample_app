@@ -24,10 +24,9 @@
 	<% "<input name=\"option[text]\" type=\"text\">"%>	
 	<% "<input name=\"option[question_id]\" type=\"hidden\" value=\'<%= @question.id %>\'>"%>
 	<% "<input name=\"addOption\" type=\"submit\" value=\"Add Option\">" %>
+	<% "</form>"%>
+	<% "</div>"%>
 <% end%>
-		<!--<input name="addOption" type="submit" value="Add Option"> -->
-	</form>
-</div>
 
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
