@@ -17,15 +17,14 @@
 				<% end %>
 		<% end %>
 </div>
-<div>
-	<h3>Add Option</h3>
-	<form method="post" action="/options">
-		<input name="option[text]" type="text">
-		<input name="option[question_id]" type="hidden" value='<%= @question.id %>'>
-		<% if @user.isAdmin.nil? %>
-			<% "<input name=\"addOption\" type=\"submit\" value=\"Add Option\">" %>
-			
-		<% end%>
+<% if @user.isAdmin.nil? %>
+  	<% "<div>"%>
+	<% "<h3>Add Option</h3>"%>
+	<% "<form method=\"post\" action=\"/options\">"%>	
+	<% "<input name=\"option[text]\" type=\"text\">"%>	
+	<% "<input name=\"option[question_id]\" type=\"hidden\" value=\'<%= @question.id %>\'>"%>
+	<% "<input name=\"addOption\" type=\"submit\" value=\"Add Option\">" %>
+<% end%>
 		<!--<input name="addOption" type="submit" value="Add Option"> -->
 	</form>
 </div>
