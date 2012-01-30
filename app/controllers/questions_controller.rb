@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
     else
       @question = Question.find(@user.current_question_id)
     end
-    redirect_to @question :email =>@user.fbUser
+    redirect_to @question, :email =>@user.fbUser
      #respond_to do |format|
        #format.html { redirect_to @question, :notice => 'Question for you' }
        #format.json { render :json => @question, :status => :next, :location => @question  }
