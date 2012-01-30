@@ -35,9 +35,9 @@
 		$("#checkAnswerButton").click(function(){
 			
 			$.ajax({
-				url:"/checkAnswer"
+				url:"/checkAnswer.json"
 				, type: "POST"
-				, dataType: "text"
+				, dataType: "json"
 				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']:checked").val()}
 				, success: function(data){
 					if(data){
