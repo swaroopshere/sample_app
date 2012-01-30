@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
       @user=User.new() #TODO - add appropriate parameters
       @user.fbUser=params[:email]
       @user.current_question_id = @firstQuestion.id
-      @user.isAdmin = "false"
+      @user.isAdmin = false
       @user.save
     else
       @question = Question.find(@user.current_question_id)
@@ -127,6 +127,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if(@answer == @userAnswer)
+       #@user = 
         @data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         format.json { render :json => @data }
         
