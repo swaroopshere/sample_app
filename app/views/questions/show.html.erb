@@ -33,26 +33,25 @@
 <script language="javascript">
 	$(document).ready(function(){
 		$("#checkAnswerButton").click(function(){
+			
 			$.ajax({
 				url:"/checkAnswer"
 				, type: "POST"
 				, dataType: "json"
 				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']:checked").val()}
 				, success: function(data){
-					if(data){
-						if(data.isCorrect){
-							alert("Its the right answer!!");
-						}
-						else
-							alert("Sorry :( wrong answer");
-						}
+					if(data && data.isCorrect){
+						alert("Correct answer");
+					}else{
+						alert("wrong answer")
 					}
 				}
-				,error: function(){
-					alert("Error occurred");
+				, error: function(error){
+					alert("Error!");
 				}
 			});
-		})
+			
+		});
 	})
 </script>
 <%= link_to 'Edit', edit_question_path(@question) %> |
