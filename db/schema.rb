@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122050937) do
+ActiveRecord::Schema.define(:version => 20120130000952) do
 
   create_table "options", :force => true do |t|
     t.string   "text"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20120122050937) do
 
   create_table "questions", :force => true do |t|
     t.string   "text"
-    t.integer  "sequenceNumber"
+    t.integer  "sequencenumber"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "correctAnswer_id"

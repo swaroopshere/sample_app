@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SampleApp</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>The League Treasure Hunt!! Hunt for the holygrail 2012 | <%= @title %></title>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+<div id="fb-root"></div>
+ <script>
+   var TreasureHunt = {};
+   window.fbAsyncInit = function() {
+   		FB.init({appId: '284922238186472',
+       		status: true,
+       		cookie: true,
+       		xfbml: true
+		});
+		
+		//After FB init check the user is logged in or not
+		FB.getLoginStatus(function(response) {
+			if(response){
+				if (response.status == "connected") {
+				//if logged in, retrieve username and email
+				FB.api('/me', function(userData) {
+					if(userData){
+					  alert('In application.html.erb. Your name is ' + userData.name);
+					  TreasureHunt.userName = userData.name;
+					  TreasureHunt.email = userData.email;					
+					TreasureHunt.uid = response.authResponse.userID;
+					TreasureHunt.accessToken = response.authResponse.accessToken;
+					  if(onSuccess){ // call custom callback function on a given page
+						onSuccess(TreasureHunt);
+					  }
+					}
+				});
+				TreasureHunt.uid = response.authResponse.userID;
+				TreasureHunt.accessToken = response.authResponse.accessToken;
+				
+			  } else {
+				//if not authorized, return to the login page
+				if(window.location.href.indexOf("/pages/home") == -1){
+					window.location = "pages/home";
+				}
+			  }
+			}else{
+				if(window.location.href.indexOf("/pages/home") == -1){
+					window.location = "pages/home";
+				}
+			}
+		});
+	
+   };
+   (function() {
+     var e = document.createElement('script');
+     e.type = 'text/javascript';
+     e.src = 'http://connect.facebook.net/en_US/all.js';
+     e.async = true;
+     document.getElementById('fb-root').appendChild(e);
+   }());
+ </script>
 </html>

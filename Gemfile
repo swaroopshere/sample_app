@@ -1,11 +1,10 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
+#gem 'sqlite3', '1.3.3'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 
 gem 'json'
 
@@ -19,11 +18,22 @@ end
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+  #gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'pg'
+
 end
 
 group :test do
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
+  #gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'pg'
+end
+
+group :production do
+  # gems specifically for Heroku go here\
+  gem 'therubyracer-heroku', '0.8.1.pre3' # you will need this too
+  gem "pg"
 end
 
 

@@ -7,7 +7,7 @@
 
 <p>
   <b>Sequencenumber:</b>
-  <%= @question.sequenceNumber %>
+  <%= @question.sequencenumber %>
 </p>
 <br/>
 <div class='optionsList'>
@@ -17,15 +17,18 @@
 				<% end %>
 		<% end %>
 </div>
-<div>
-	<h3>Add Option</h3>
-	<form method="post" action="/options">
-		<input name="option[text]" type="text">
-		<input name="option[question_id]" type="hidden" value='<%= @question.id %>'>
-		<input name="addOption" type="submit" value="Add Option">
-	</form>
-</div>
+<% if @user.isAdmin? %>
+	<div>
+		<h3>Add Option</h3>
+		<form method="post" action="/options">
+			<input name="option[text]" type="text">
+			<input name="option[question_id]" type="hidden" value='<%= @question.id %>'>
+			<input name="addOption" type="submit" value="Add Option">
+		</form>
+	</div>
+<% end %>
 
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+<%= link_to ''%>

@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
     #    return question 1
     # end if 
     @question = Question.find(params[:id])
+    @user = User.find_by_fbUser(params[:email])
     #@question = Question.find_by_text(params[:id])
     
     @options = Option.find_all_by_question_id(params[:id])
@@ -33,15 +34,30 @@ class QuestionsController < ApplicationController
   end
   
   def landingShow
-    @fbuser = User.find_by_fbUser(params[:id])
-    if @fbUser.nil?
-      @fbUser=User.new() #TODO - add appropriate parameters
-      @fbUser.save      
+    @firstQuestion = Question.first(:order => 'sequencenumber asc')
+    @question = @firstQuestion
+    if @firstQuestion.nil?
+      #redirect_to "/pages/home"
+      return
+    else
+      
     end
-    @question = Question.find(@fbuser.current_question_id)
-    format.html { redirect_to @question }
-    format.json { render :json => @question }
-    
+
+    @user = User.find_by_fbUser(params[:email])
+    if @user.nil?
+      @user=User.new() #TODO - add appropriate parameters
+      @user.fbUser=params[:email]
+      @user.current_question_id = @firstQuestion.id
+      @user.isAdmin = "false"
+      @user.save
+    else
+      @question = Question.find(@user.current_question_id)
+    end
+    redirect_to @question, :email =>@user.fbUser
+     #respond_to do |format|
+       #format.html { redirect_to @question, :notice => 'Question for you' }
+       #format.json { render :json => @question, :status => :next, :location => @question  }
+     #end
   end
 
 
