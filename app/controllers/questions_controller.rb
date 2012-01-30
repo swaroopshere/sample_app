@@ -124,13 +124,17 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = @question.correctAnswer_id
     @userAnswer = Integer(params[:answer])
+    @nextQuestion = @question
 
 
     respond_to do |format|
       if(@answer == @userAnswer)
-        format.html { render :text => "success" }
+        @data = {isCorrect:true, url:url_for(@nextQuestion)}
+        format.json { render :json => @data }
+        
       else
-        format.html { render :text => "failure" }
+        @errorData = {isCorrect:false}
+        format.json { render :json => @errorData }
         #format.json { head :ok }
       end
 
