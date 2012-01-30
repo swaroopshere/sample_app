@@ -1,3 +1,5 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" language="javascript">
+</script>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -13,7 +15,7 @@
 <div class='optionsList'>
 		<% if !@options.nil? %>
 			<% @options.each do |option| %>
-				<input type="radio" name="radioOption"> &nbsp; <%= option.text %><br/>
+				<input type="radio" name="radioOption" value='<%= option.id %>'> &nbsp; <%= option.text %><br/>
 				<% end %>
 		<% end %>
 </div>
@@ -27,8 +29,28 @@
 		</form>
 	</div>
 <% end %>
-
-
+<input id = "checkAnswerButton"type="button" name="checkAnswer" value="Check Answer">
+<script language="javascript">
+	$(document).ready(function(){
+		$("#checkAnswerButton").click(function(){
+			$.ajax({
+				url:"/checkAnswer", type: "POST", dataType: "json", data: {id:<%= @question.id %>, answer: $("input[name='radioOption']").val(), success:function(data){
+					if(data){
+						if(data.isCorrect){
+							alert("Its the right answer!!");
+						}
+						else{
+							alert("Sorry :( wrong answer");
+						}
+					}
+				}, error:function(){
+					alert("Error occurred");
+				}}
+				
+			})
+		})
+	})
+</script>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
 <%= link_to ''%>

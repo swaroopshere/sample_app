@@ -119,4 +119,19 @@ class QuestionsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def checkAnswer
+    @question = Question.find(params[:id])
+    @answer = @question.correctAnswer_id
+    @userAnswer = Integer(params[:answer])
+
+
+    respond_to do |format|
+      if(@answer == @userAnswer)
+        format.json { render :json => "{'isCorrect':true}" }
+      end
+      format.html { redirect_to questions_url }
+      format.json { head :ok }
+    end
+  end
 end
