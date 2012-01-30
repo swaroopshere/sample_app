@@ -38,9 +38,7 @@ class QuestionsController < ApplicationController
     @question = @firstQuestion
     if @firstQuestion.nil?
       #redirect_to "/pages/home"
-      return
-    else
-      
+      return      
     end
 
     @user = User.find_by_fbUser(params[:email])
