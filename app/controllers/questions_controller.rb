@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
     @firstQuestion = Question.first(:order => 'sequencenumber asc')
     @question = @firstQuestion
     if @firstQuestion.nil?
-      redirect_to "/pages/home"
+      format.html { redirect_to "/pages/home" }
     end
 
     @user = User.find_by_fbUser(params[:email])
