@@ -130,8 +130,8 @@ class QuestionsController < ApplicationController
       if(@answer == @userAnswer)
         format.html { render :text => "success" }
       else
-        format.html { redirect_to questions_url }
-        format.json { head :ok }
+        format.html { render :text => "failure" }
+        #format.json { head :ok }
       end
 
     end
