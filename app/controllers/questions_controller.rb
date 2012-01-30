@@ -52,9 +52,10 @@ class QuestionsController < ApplicationController
     else
       @question = Question.find(@user.current_question_id)
     end
-
-  format.html { redirect_to @question, :notice => 'Question for you' }
-  format.json { render :json => @question, :status => :next, :location => @question  }
+     respond_to do |format|
+       format.html { redirect_to @question, :notice => 'Question for you' }
+       format.json { render :json => @question, :status => :next, :location => @question  }
+     end
   end
 
 
