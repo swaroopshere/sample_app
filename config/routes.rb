@@ -7,11 +7,8 @@ SampleApp::Application.routes.draw do
   resources :questions
 
   match '/startHunt',   :to =>  'questions#landingShow'
-<<<<<<< HEAD
   match '/questions/checkAnswer' :to => 'questions#checkAnswer'
-=======
   match '/checkAnswer'  :to =>  'questions#checkAnswer'
->>>>>>> b345b708175dcce3ed2a3c584bdb5a10b3eb12d1
 
   get "pages/home"
 
