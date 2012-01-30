@@ -124,7 +124,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = @question.correctAnswer_id
     @userAnswer = Integer(params[:answer])
-    @nextQuestion = @question
+    @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
 
 
     respond_to do |format|
