@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
   end
   
   def landingShow
-    @firstQuestion = Question.first(:order => 'sequencenumber asc')
+    @firstQuestion = Question.first(:order => '\"sequencenumber\" asc')
     @question = @firstQuestion
     if @firstQuestion.nil?
       redirect_to "/pages/home"
