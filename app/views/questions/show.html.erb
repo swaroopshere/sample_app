@@ -37,10 +37,9 @@
 			$.ajax({
 				url:"/checkAnswer"
 				, type: "POST"
-				, dataType: "json"
 				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']:checked").val()}
 				, success: function(data){
-					if(data && data.isCorrect){
+					if(data){
 						alert("Correct answer");
 					}else{
 						alert("wrong answer")
