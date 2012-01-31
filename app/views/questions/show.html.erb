@@ -29,11 +29,7 @@
 		</form>
 	</div>
 <% end %>
-<% if @user.nil? || not(@user.isAdmin) %>
 	<input id = "checkAnswerButton"type="button" name="checkAnswer" value="Check Answer">
-<% else%>
-
-<% end %>
 <script language="javascript">
 	$(document).ready(function(){
 		$("#checkAnswerButton").click(function(){
