@@ -133,7 +133,8 @@ class QuestionsController < ApplicationController
       if(@answer == @userAnswer)
        #@user = 
         @data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
-        format.json { render :json => @data, @user.fbUser }
+        @response = { :data => @data, :email => @user.fbUser }
+        format.json { render :json => @response }
         
       else
         @errorData = {isCorrect:false}

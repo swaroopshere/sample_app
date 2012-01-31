@@ -46,7 +46,7 @@
 				, success: function(data){
 					if(data && data.isCorrect){
 						//alert("Correct answer");
-						window.location = data.url;
+						window.location = data.data.url + '?email=' + data.email;
 					}else{
 						//alert("wrong answer")
 					}
