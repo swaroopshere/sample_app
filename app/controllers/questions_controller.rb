@@ -21,7 +21,10 @@ class QuestionsController < ApplicationController
     #    return question 1
     # end if 
     @question = Question.find(params[:id])
+    @email = params[:email]
     @user = User.find_by_fbUser(params[:email])
+    Rails.logger.warn "Email received from request #{@email}"
+    Rails.logger.warn "Login failed for user #{@user}"
     #@question = Question.find_by_text(params[:id])
     
     @options = Option.find_all_by_question_id(params[:id])
