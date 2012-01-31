@@ -16,6 +16,7 @@
 </div>
 
 <% if @user.isAdmin? %>
+   <br/>
 	<div>
 		<h3>Add Option</h3>
 		<form method="post" action="/options">
@@ -25,6 +26,7 @@
 		</form>
 	</div>
 <% end %>
+<br/>
 	<input id = "checkAnswerButton"type="button" name="checkAnswer" value="Check Answer" class="questionSubmitButton">
 	</div>
 <script language="javascript">
