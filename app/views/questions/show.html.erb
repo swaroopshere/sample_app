@@ -14,7 +14,7 @@
 				<% end %>
 		<% end %>
 </div>
-</div>
+
 <% if @user.isAdmin? %>
 	<div>
 		<h3>Add Option</h3>
@@ -26,6 +26,7 @@
 	</div>
 <% end %>
 	<input id = "checkAnswerButton"type="button" name="checkAnswer" value="Check Answer" class="questionSubmitButton">
+	</div>
 <script language="javascript">
 	$(document).ready(function(){
 		$("#checkAnswerButton").click(function(){
