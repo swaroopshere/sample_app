@@ -25,6 +25,11 @@
 	
 }
 
+.game-content {
+	position:relative;
+	  left:20%;
+	  top:20%;
+}
 .questionSubmitButton {
 	
 }
@@ -32,9 +37,7 @@
 body {
   background: #cff;
   text-align:justify;
-  position:relative;
-  left:30%;
-  top:30%;
+  
 }
 
 header {
