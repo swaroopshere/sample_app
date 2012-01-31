@@ -5,13 +5,26 @@
 		//alert("In home.html.erb" + TreasureHunt.email);
 	}
 </script>    
-<div class="fb-login-button" data-scope="email" onlogin="location.href = '/pages/home';">
-       Login with Facebook
-     </div>
-	<div class='initialDescription'>
-	  Welcome to the home page for the all exciting treasure hunt! A hunt that will eventually reveal the biggest news of 2012 to the worthy league members. Follow the different clues to reach the holygrail ;). Login using your facebook id and start the quest!
+
+	<div class="initialDescription">
+		<p>
+	  Hello league. 2012 brings another year into our lives and just like every previous year, this year brings with it a bunch of happy news. 
+	</p>
+	<p>
+		To find out more about the first news of 2012, you guys will have to play a small game. A game where you will have to answer questions. With each answer, you get a clue to the news. At the end of the game, you will have enough clues to unravel the secret ;) 
+	</p>
+	<p>
+		To start, you will have to login through Facebook. Why? Because this game was designed by a Facebook addict ;) So go ahead and click on the login button. Don't worry, this site will not extract any information from your Facebook accounts. 
+	</p>
+	<p>
+		Just relax and enjoy the game and unravel the news of 2012 :)
+	</p>
+	
 	  <!--<a href="/startHunt">Start here</a> -->
 	</div>
+	<div class="fb-login-button" data-scope="email" onlogin="location.href = '/pages/home';">
+	       Login with Facebook
+	     </div>
 	<form id = "hiddenUserInformation" name = "hiddenUserInformation" action ="/startHunt" method="post">
 		<input id  = "hiddenName" type="hidden" name="email">
 	</form>
