@@ -31,7 +31,13 @@
 	  top:20%;
 }
 .questionSubmitButton {
-	
+	border: 1px solid #006;
+	background: #9cf;
+}
+
+.questionSubmitButton:hover {
+	border: 1px solid #f00;
+    background: #eef;
 }
 
 body {
