@@ -44,7 +44,7 @@
 				, dataType: "json"
 				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']:checked").val()}
 				, success: function(data){
-					if(data && data.isCorrect){
+					if(data && data.data.isCorrect){
 						//alert("Correct answer");
 						window.location = data.data.url + '?email=' + data.email;
 					}else{
