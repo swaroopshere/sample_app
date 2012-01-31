@@ -32,6 +32,9 @@
 body {
   background: #cff;
   text-align:justify;
+  position:absolute;
+  left:50%;
+  top:50%;
 }
 
 header {
