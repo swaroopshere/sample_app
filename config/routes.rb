@@ -8,6 +8,8 @@ SampleApp::Application.routes.draw do
 
   match '/startHunt',   :to =>  'questions#landingShow'
   match '/checkAnswer',  :to =>  'questions#checkAnswer'
+  
+  root :to => 'pages#home'
 
   get "pages/home"
 
