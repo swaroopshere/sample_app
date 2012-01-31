@@ -7,7 +7,7 @@
 }
 
 .questionText {
-	
+		
 }
 
 .optionsList {
@@ -20,10 +20,12 @@
 
 body {
   background: #cff;
+  text-align:center;
 }
 
 header {
   padding-top: 20px;
+  text-align:center;
 }
 
 header img {
