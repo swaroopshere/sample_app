@@ -42,7 +42,7 @@
 				, success: function(data){
 					if(data && data.data.isCorrect){
 						alert("Correct answer");
-						window.location = data.data.url + '?email=' + <%= @user.fbUser %>;
+						window.location = data.data.url;
 					}else{
 						alert("wrong answer")
 					}
