@@ -57,6 +57,7 @@
 	function logoutFromFacebook() {
 		FB.logout(function(response) {
 		  // user is now logged out
+		location.href=window.location.href.split("/")[0];
 		});
 	}
 </script>
