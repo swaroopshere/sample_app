@@ -11,12 +11,17 @@
 		The league treasure hunt
 	</h1>
 	<%= yield %>
-	<div class="fb-login-button fb-nav" data-scope="email" onlogin="location.href = '/pages/home'" autologoutlink="true">
+	<div id="loginButton", name="loginButton"class="fb-login-button fb-nav" data-scope="email" onlogin="location.href = '/pages/home'" autologoutlink="true" style="display:none;visibility:hidden">
 	       Login with Facebook
 	     </div>
+		<div id="logoutButton", name="logoutButton"class="fb-login-button fb-nav" data-scope="email" onlogin="location.href = '/pages/home'" autologoutlink="true" style="display:none;visibility:hidden">
+		       Logout
+		     </div>
 	</div>
   </body>
 <div id="fb-root"></div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" language="javascript">
+</script>
  <script>
    var TreasureHunt = {};
    window.fbAsyncInit = function() {
@@ -30,6 +35,10 @@
 		FB.getLoginStatus(function(response) {
 			if(response){
 				if (response.status == "connected") {
+					document.getElementById("logoutButton").style.display="inline";
+					document.getElementById("logoutButton").style.visibility="visible";
+					document.getElementById("loginButton").style.display="none";
+					document.getElementById("loginButton").style.visibility="hidden";				
 				//if logged in, retrieve username and email
 				FB.api('/me', function(userData) {
 					if(userData){
@@ -48,11 +57,19 @@
 				
 			  } else {
 				//if not authorized, return to the login page
+				document.getElementById("loginButton").style.display="inline";
+				document.getElementById("loginButton").style.visibility="visible";
+				document.getElementById("logoutButton").style.display="none";
+				document.getElementById("logoutButton").style.visibility="hidden";
 				if(window.location.href.indexOf("/pages/home") == -1){
 					window.location = "pages/home";
 				}
 			  }
 			}else{
+				document.getElementById("loginButton").style.display="inline";
+				document.getElementById("loginButton").style.visibility="visible";
+				document.getElementById("logoutButton").style.display="none";
+				document.getElementById("logoutButton").style.visibility="hidden";
 				if(window.location.href.indexOf("/pages/home") == -1){
 					window.location = "pages/home";
 				}
