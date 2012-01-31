@@ -122,7 +122,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answer = @question.correctAnswer_id
     @userAnswer = Integer(params[:answer])
+    @userEmail= params[:email]
     @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
+    @user = User.find_by_fbUser(@userEmail)
+    #increment user sequencenumber count
+    @user.save
 
 
     respond_to do |format|
