@@ -1,5 +1,4 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" language="javascript">
-</script>
+
 <p id="notice"><%= notice %></p>
 <div class="game-content">
 <p class = "questionText">
@@ -54,12 +53,6 @@
 		});
 	})
 	
-	function logoutFromFacebook() {
-		FB.logout(function(response) {
-		  // user is now logged out
-		location.href=window.location.href.split("/")[0];
-		});
-	}
 </script>
 <% if not(@user.nil?) && @user.isAdmin %>
 <nav class="round">
@@ -67,4 +60,3 @@
 <%= link_to 'Back', questions_path %>
 </nav>
 <% end%>
-<input id="logoutFacebook" type="button" class="logout-fb" name="logoutFacebook" value="Logout from Facebook" onclick="logoutFromFacebook()">
