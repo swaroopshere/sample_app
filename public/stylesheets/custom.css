@@ -2,6 +2,11 @@
   width: 710px;
 }
 
+.pageHeader {
+	padding-top: 20px;
+	text-align:center;
+}
+
 .initialDescription {
 	
 }
