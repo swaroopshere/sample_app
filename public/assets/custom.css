@@ -2,6 +2,12 @@
   width: 710px;
 }
 
+.fb-nav {
+	position:relative;
+	right:5%;
+	top:5%;
+}
+
 .pageHeader {
 	padding-top: 20px;
 	text-align:center;
