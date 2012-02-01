@@ -152,15 +152,10 @@ class QuestionsController < ApplicationController
     Rails.logger.warn "in nextQuestion controller method"
     @user = User.find_by_fbUser(params[:email])
     @question = Question.find(params[:id])
+    Rails.logger.warn "current questionid=" + @question.id
     @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
-    @url = url_for(@nextQuestion) + "?email=" + @user.fbUser
-    respond_to do |format|
-       #@user = 
-        #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
-        #@response = { :data => @data, :email => @user.fbUser }
-        format.html { render @url }# index.html.erb
-        #format.json { render :json => @nextQuestion }
-    end
+    Rails.logger.warn "next questionid=" + @nextQuestion.id
+    redirect_to question_path(@question, {:id => @question.id, :email => @user.fbUser})
     
   end
 end
