@@ -137,7 +137,7 @@ class QuestionsController < ApplicationController
        #@user = 
         #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         @url = url_for(@nextQuestion)
-        @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@email}"
+        @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
         @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         #@response = { :data => @data }
         format.json { render :json =>  @data }
