@@ -156,7 +156,7 @@ class QuestionsController < ApplicationController
     @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
     Rails.logger.warn "next questionid=#{@nextQuestion.id}" 
     #redirect_to question_path(@nextQuestion, {:id => @nextQuestion.id, :email => @user.fbUser})
-    redirect_to :action => 'show', :id => @question.id, :email => @user.fbUser
+    redirect_to @nextQuestion, :action => 'show', :id => @question.id, :email => @user.fbUser
     
   end
 end
