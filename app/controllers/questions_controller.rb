@@ -152,9 +152,9 @@ class QuestionsController < ApplicationController
     Rails.logger.warn "in nextQuestion controller method"
     @user = User.find_by_fbUser(params[:email])
     Rails.logger.warn "current user=#{@user}" 
-    #@question = Question.find(params[:id])
+    @currentQuestion = Question.find(params[:id])
     #Rails.logger.warn "current questionid=#{@question.id}" 
-    @question = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
+    @question = Question.find(:first, :conditions => ["sequencenumber > ?", @currentQuestion.sequencenumber], :order => 'sequencenumber asc')
     #Rails.logger.warn "next questionid=#{@nextQuestion.id}" 
     #redirect_to question_path(@nextQuestion, {:id => @nextQuestion.id, :email => @user.fbUser})
     redirect_to question_path(@question, {:id => @question.id, :email => @user.fbUser})
