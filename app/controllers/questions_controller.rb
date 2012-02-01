@@ -156,7 +156,7 @@ class QuestionsController < ApplicationController
        #@user = 
         #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         #@response = { :data => @data, :email => @user.fbUser }
-        format.html # index.html.erb
+        format.html { render :html => @nextQuestion }# index.html.erb
         format.json { render :json => @nextQuestion }
     end
     
