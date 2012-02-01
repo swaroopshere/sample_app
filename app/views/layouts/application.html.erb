@@ -11,10 +11,10 @@
 		The league treasure hunt
 	</h1>
 	<%= yield %>
-	<div id="loginButton", name="loginButton"class="fb-login-button fb-nav" data-scope="email" autologoutlink="true" style="display:none;visibility:hidden">
+	<div id="loginButton", name="loginButton"class="fb-login-button fb-nav" data-scope="email" onlogin="window.location = '/pages/home';" autologoutlink="true" style="display:none;visibility:hidden">
 	       Login with Facebook
 	     </div>
-		<div id="logoutButton", name="logoutButton"class="fb-login-button fb-nav" data-scope="email" autologoutlink="true" style="display:none;visibility:hidden">
+		<div id="logoutButton", name="logoutButton"class="fb-login-button fb-nav" data-scope="email" onlogin="window.location = '/pages/home';" autologoutlink="true" style="display:none;visibility:hidden">
 		       Logout
 		     </div>
 	</div>
