@@ -131,9 +131,7 @@ class QuestionsController < ApplicationController
     @user = User.find_by_fbUser(@userEmail)
     #increment user sequencenumber count
     @user.save
-    if(@nextQuestion.nil?)
-      Rails.logger.warn "nextQuestion is nill: #{@nextQuestion}"
-    end
+    
 
 
     respond_to do |format|
@@ -141,7 +139,10 @@ class QuestionsController < ApplicationController
        #@user = 
         #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         @url = url_for(@nextQuestion)
-        @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
+        if(not(@nextQuestion.nil?))
+          #Rails.logger.warn "nextQuestion is nill: #{@nextQuestion}"
+          @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
+        end
         @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         #@response = { :data => @data }
         format.json { render :json =>  @data }
