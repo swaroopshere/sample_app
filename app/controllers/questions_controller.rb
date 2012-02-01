@@ -135,9 +135,12 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if(@answer == @userAnswer)
        #@user = 
-        @data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
-        @response = { :data => @data, :email => @user.fbUser }
-        format.json { render :json => @response }
+        #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
+        @url = url_for(@nextQuestion)
+        @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@email}"
+        @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "http://www.youtube.com/watch?v=w3YOygfXTf4"}
+        #@response = { :data => @data }
+        format.json { render :json =>  @data }
         
       else
         @errorData = {isCorrect:false}
