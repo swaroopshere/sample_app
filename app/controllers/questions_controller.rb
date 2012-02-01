@@ -147,4 +147,18 @@ class QuestionsController < ApplicationController
 
     end
   end
+  
+  def nextQuestion
+    @user = User.find_by_fbUser(params[:email])
+    @question = Question.find(params[:id])
+    @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
+    respond_to do |format|
+       #@user = 
+        #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
+        #@response = { :data => @data, :email => @user.fbUser }
+        format.html # index.html.erb
+        format.json { render :json => @nextQuestion }
+    end
+    
+  end
 end
