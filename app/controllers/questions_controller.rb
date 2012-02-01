@@ -151,6 +151,7 @@ class QuestionsController < ApplicationController
   def nextQuestion
     Rails.logger.warn "in nextQuestion controller method"
     @user = User.find_by_fbUser(params[:email])
+    Rails.logger.warn "current user=#{@user}" 
     @question = Question.find(params[:id])
     Rails.logger.warn "current questionid=#{@question.id}" 
     @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
