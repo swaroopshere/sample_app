@@ -129,28 +129,22 @@ class QuestionsController < ApplicationController
     
     @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
     @user = User.find_by_fbUser(@userEmail)
-    #increment user sequencenumber count
     @user.save
     
 
 
     respond_to do |format|
       if(@answer == @userAnswer)
-       #@user = 
-        #@data = {isCorrect:true, url: @nextQuestion? url_for(@nextQuestion): "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         @url = url_for(@nextQuestion)
         if(not(@nextQuestion.nil?))
-          #Rails.logger.warn "nextQuestion is nill: #{@nextQuestion}"
           @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
         end
         @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "http://www.youtube.com/watch?v=w3YOygfXTf4"}
-        #@response = { :data => @data }
         format.json { render :json =>  @data }
         
       else
         @errorData = {isCorrect:false}
         format.json { render :json => @errorData }
-        #format.json { head :ok }
       end
 
     end
@@ -163,15 +157,9 @@ class QuestionsController < ApplicationController
     Rails.logger.warn "current user=#{@user}" 
     Rails.logger.warn "current user=#{@email}" 
     @currentQuestion = Question.find(params[:id])
-    #Rails.logger.warn "current questionid=#{@question.id}" 
     @question = Question.find(:first, :conditions => ["sequencenumber > ?", @currentQuestion.sequencenumber], :order => 'sequencenumber asc')
-    #Rails.logger.warn "next questionid=#{@nextQuestion.id}" 
-    #redirect_to question_path(@nextQuestion, {:id => @nextQuestion.id, :email => @user.fbUser})
     @url = url_for(@question)
     @urlWithParams = "#{@url}?id=#{@question.id}&email=#{@email}"
-    redirect_to @urlWithParams
-    #redirect_to question_path(@question, {:id => @question.id, :email => @user.fbUser})
-    #redirect_to @nextQuestion, :action => 'show', :id => @question.id, :email => @user.fbUser
-    
+    redirect_to @urlWithParams    
   end
 end

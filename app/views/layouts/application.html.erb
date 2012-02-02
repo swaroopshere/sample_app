@@ -6,12 +6,18 @@
     <title>The League Treasure Hunt!! Hunt for the holygrail 2012 | <%= @title %></title>
     <%= csrf_meta_tag %>
 	<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+	<%= stylesheet_link_tag 'style', :media => 'screen' %>
+	
   </head>
   <body>
 	<div class="container">
-	<h1 class="pageHeader">
-		The league treasure hunt
-	</h1>
+		<div id="main_container">
+			<div class="top_leafs"><img src="top_leafs.png" alt="" title=" "/></div>
+			<div id="header">
+		    	<div class="logo">
+		       <a href="index.html">league treasure hunt</a>
+		        </div>     
+		    </div>
 	<%= yield %>
 	<div id="loginButton", name="loginButton"class="fb-login-button fb-nav" data-scope="email" onlogin="window.location = '/pages/home';" autologoutlink="true" style="display:none;visibility:hidden">
 	       Login with Facebook
