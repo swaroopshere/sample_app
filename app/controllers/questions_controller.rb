@@ -181,6 +181,7 @@ class QuestionsController < ApplicationController
     if(@lastFormName <=> "sukenfenny" || @lastFormName <=> "fennysuken")
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
       Rails.logger.warn "Link: #{@link}"
+      
       #@data = {isCorrect:true, url: "http://www.youtube.com/watch?v=w3YOygfXTf4"} 
     else
       @link = "no"

@@ -17,13 +17,49 @@
    </div>
 	<p>
 	<div name="initals">
+		Letters from initials on the correct answers: <br/>
+		
 	</div>
 	<div name="youtubeLink">
 		<% if @link <=> "http://www.youtube.com/watch?v=w3YOygfXTf4" %>
 		<h1>Congratulations! you have reached your destination :) and now, enjoy your prize. Do not forget to turn on the volume on your speakers ;)</h1>
 		<%= link_to 'Treasure', @link %>
-		
 		<% end %>
 	</div>
 	</p>
 </div>
+<script language="javascript">
+	$(document).ready(function(){
+		$("#lastFormSubmit").click(function(){
+			document.getElementById("answers").style.display="none";
+			document.getElementById("answers").style.visibility="hidden";
+			$.ajax({
+				url:"/lastPage"
+				, type: "POST"
+				, dataType: "json"
+				, data: {names: $("input[name='lastFormName']").val(), email: TreasureHunt.email}
+				, success: function(data){
+					if(data && data.isCorrect){
+						document.getElementById("answers").style.display="inline";
+						document.getElementById("answers").style.visibility="visible";
+						document.getElementById("answers").innerHTML="<h3 style=\"color:#006600\">There you goo!! :) Now for the actual news, you will be redirected to a youtube video!. You will also be logged out of your Facebook account</h3>";
+						//alert("Correct answer");
+						//window.applicationCache.update();
+						window.location = data.url;
+					}else{
+						//alert("wrong answer")
+						document.getElementById("answers").style.display="inline";
+						document.getElementById("answers").style.visibility="visible";
+						document.getElementById("answers").innerHTML="<h3 style=\"color:#FF0000\">Nah.. try again.. </h3>";
+
+					}
+				}
+				, error: function(error){
+					alert("Error!");
+				}
+			});
+			
+		});
+	})
+	
+</script>
