@@ -180,10 +180,11 @@ class QuestionsController < ApplicationController
     @lastFormName = params[:lastFormName]
     if(@lastFormName <=> "sukenfenny" || @lastFormName <=> "fennysuken")
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
-      @data = {isCorrect:true, url: "http://www.youtube.com/watch?v=w3YOygfXTf4"} 
+      Rails.logger.warn "#{Link: @link}"
+      #@data = {isCorrect:true, url: "http://www.youtube.com/watch?v=w3YOygfXTf4"} 
     else
       @link = "no"
-      @data = {isCorrect:false, url: "/lastPage"}
+      #@data = {isCorrect:false, url: "/lastPage"}
     end
   end
 end
