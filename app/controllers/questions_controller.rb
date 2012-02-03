@@ -182,6 +182,7 @@ class QuestionsController < ApplicationController
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
       @data = {isCorrect:true, url: "http://www.youtube.com/watch?v=w3YOygfXTf4"} 
     else
+      @link = "no"
       @data = {isCorrect:false, url: "/lastPage"}
     end
   end
