@@ -134,7 +134,7 @@ class QuestionsController < ApplicationController
     @answerString=@option[0]
     Rails.logger.warn "AnswerString: #{@answerString}"
     @sessionValue = session[:answerString]
-    Rail.slogger.warn "Session value: #{@sessionValue}"
+    Rails.logger.warn "Session value: #{@sessionValue}"
     
 
 
