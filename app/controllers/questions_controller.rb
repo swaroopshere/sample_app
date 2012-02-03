@@ -142,7 +142,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if(@answer == @userAnswer)
         @answerString = "#{@sessionValue}#{@answerString}"
+        Rails.logger.warn "AnswerString after correct: #{@answerString}"
         session[:answerString] = @answerString
+        Rails.logger.warn "Session after correct: #{session[:answerString]}"
         @url = url_for(@nextQuestion)
         if(not(@nextQuestion.nil?))
           @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
