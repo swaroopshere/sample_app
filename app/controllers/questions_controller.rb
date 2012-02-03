@@ -130,11 +130,16 @@ class QuestionsController < ApplicationController
     @nextQuestion = Question.find(:first, :conditions => ["sequencenumber > ?", @question.sequencenumber], :order => 'sequencenumber asc')
     @user = User.find_by_fbUser(@userEmail)
     @user.save
+    @option=Option.find(@answer).text
+    @answerString=@option[0]
+    @sessionValue = session[:answerString]
     
 
 
     respond_to do |format|
       if(@answer == @userAnswer)
+        @answerString = "#{@sessionValue}#{@answerString}"
+        session[:answerString]=@answerString
         @url = url_for(@nextQuestion)
         if(not(@nextQuestion.nil?))
           @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
@@ -143,6 +148,7 @@ class QuestionsController < ApplicationController
         format.json { render :json =>  @data }
         
       else
+        @answerString = @sessionValue
         @errorData = {isCorrect:false}
         format.json { render :json => @errorData }
       end
