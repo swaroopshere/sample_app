@@ -188,6 +188,8 @@ class QuestionsController < ApplicationController
       @data = {isCorrect:false, url: "/lastPage"}
       #@data = {isCorrect:false, url: "/lastPage"}
     end
-    format.json { render :json =>  @data }
+    respond_to do |format|
+      format.json { render :json =>  @data }
+    end
   end
 end
