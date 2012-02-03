@@ -31,16 +31,14 @@
                   To start, you will have to login through Facebook. Why? Because this game was designed by a Facebook addict ;) So go ahead and click on the login button. Don't worry, this site will not extract any information from your Facebook accounts. 
                     </p>
                     
-                          <form id = "hiddenUserInformation" name = "hiddenUserInformation" action ="/startHunt" method="post">
-							<input id  = "hiddenName" type="hidden" name="email">
-						</form>
+                        
 						   
             
             </div>
             
             
             <div class="right_content">
-            	<%= render "fbLogin"%>
+            	<%= render "fbLogin" %>
                      <h1>Expedition tips</h1>
                     
                     <div class="tip_box"> 
@@ -57,11 +55,10 @@
                     </p>
                     
                     </div>
-					
-                   
-               
-            
             </div>
 	Blah
+	  <form id = "hiddenUserInformation" name = "hiddenUserInformation" action ="/startHunt" method="post">
+		<input id  = "hiddenName" type="hidden" name="email">
+	</form>
 	</div>
 
