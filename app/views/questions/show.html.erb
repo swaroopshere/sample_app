@@ -9,7 +9,7 @@
 <div class="optionsList">
 		<% if !@options.nil? %>
 			<% @options.each do |option| %>
-				<input type="radio" name="radioOption" value="<%= option.id %>"> &nbsp; <%= option.text %> <br/>
+				<input type="radio" name="radioOption" value="<%= option.id %>" /> &nbsp; <%= option.text %> <br/>
 				<% end %>
 		<% end %>
 </div>
