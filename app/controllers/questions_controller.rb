@@ -180,7 +180,7 @@ class QuestionsController < ApplicationController
     @lastFormName = params[:name]
     @data
     respond_to do |format|
-    if(@lastFormName <=> "sukenfenny" || @lastFormName <=> "fennysuken")
+    if(@lastFormName == "sukenfenny" || @lastFormName == "fennysuken")
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
       Rails.logger.warn "Link: #{@link}"
       @data = {isCorrect:true, url: @link}
