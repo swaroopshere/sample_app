@@ -59,14 +59,15 @@
 					if(data && data.isCorrect){
 						document.getElementById("answers").style.display="inline";
 						document.getElementById("answers").style.visibility="visible";
-						$("answers").update("Correct Answer!");
+						document.getElementById("answers").innerHTML="Correct Answer!!";
 						//alert("Correct answer");
 						window.location = data.url;
 					}else{
 						//alert("wrong answer")
 						document.getElementById("answers").style.display="inline";
 						document.getElementById("answers").style.visibility="visible";
-						$("answers").update("Wrong Answer!");
+						document.getElementById("answers").innerHTML="Correct Answer!!";
+
 					}
 				}
 				, error: function(error){
