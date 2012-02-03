@@ -2,8 +2,8 @@
 	<p>
 		Congratulations on reaching the final step. On this page, you will have to make use of all the clues provided to you. i.e. the Initials of all the correct answers. Rearrange the letters to come up with a meaningful name to reveal your treasure :)
 </p>
-	<form id="lastForm" name="lastForm" value="lastForm" action="/lastPage" method="POST">
-		Name: <input type="textbox" name="lastFormName">
+	<form id="lastForm" name="lastForm" value="lastForm">
+		Name: <input id="lastFormTextBox" type="textbox" name="lastFormName">
 		<input id="lastFormSubmit" name="lastFormSubmit" type="submit" value="submit">
 	</form>
 </div>
@@ -20,11 +20,10 @@
 		Letters from initials on the correct answers: <br/>
 		
 	</div>
-	<div name="youtubeLink">
-		<% if @link <=> "http://www.youtube.com/watch?v=w3YOygfXTf4" %>
+	<div name="youtubeLink" id="youtubelink">
+		
 		<h1>Congratulations! you have reached your destination :) and now, enjoy your prize. Do not forget to turn on the volume on your speakers ;)</h1>
-		<%= link_to 'Treasure', @link %>
-		<% end %>
+		
 	</div>
 	</p>
 </div>
@@ -37,12 +36,13 @@
 				url:"/lastPage"
 				, type: "POST"
 				, dataType: "json"
-				, data: {names: $("input[name='lastFormName']").val(), email: TreasureHunt.email}
+				, data: {name: $("input#lastFormTextBox").val()}
 				, success: function(data){
 					if(data && data.isCorrect){
 						document.getElementById("answers").style.display="inline";
 						document.getElementById("answers").style.visibility="visible";
 						document.getElementById("answers").innerHTML="<h3 style=\"color:#006600\">There you goo!! :) Now for the actual news, you will be redirected to a youtube video!. You will also be logged out of your Facebook account</h3>";
+						document.getElementById("youtubelink").innerHTML="<h1>Congratulations! you have reached your destination :) and now, enjoy your prize. Do not forget to turn on the volume on your speakers ;)</h1> <a href=\"" + data.url +"\">Treasure</a>";
 						//alert("Correct answer");
 						//window.applicationCache.update();
 						window.location = data.url;
