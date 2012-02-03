@@ -29,6 +29,13 @@
 <br/>
 	<input id = "checkAnswerButton"type="button" name="checkAnswer" value="Check Answer" class="questionSubmitButton">
 	</p>
+	<% if not(@user.nil?) && @user.isAdmin %>
+	<nav class="round">
+	<%= link_to 'Edit', edit_question_path(@question) %> |
+	<%= link_to 'Back', questions_path %> |
+	<a href="/nextQuestion?id=<%= @question.id %>&email=<%= @user.fbUser %>">Next</a>
+	</nav>
+	<% end%>
 	</div>
 	<div class="right-content">
 		<div class="tip_box">
@@ -64,11 +71,4 @@
 	})
 	
 </script>
-<% if not(@user.nil?) && @user.isAdmin %>
-<nav class="round">
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %> |
-<a href="/nextQuestion?id=<%= @question.id %>&email=<%= @user.fbUser %>">Next</a>
-</nav>
-<% end%>
 </div>
