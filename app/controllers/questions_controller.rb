@@ -192,4 +192,5 @@ class QuestionsController < ApplicationController
       #@data = {isCorrect:false, url: "/lastPage"}
     end
   end
+  end
 end
