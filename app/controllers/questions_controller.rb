@@ -180,7 +180,7 @@ class QuestionsController < ApplicationController
     @lastFormName = params[:name]
     @data
     respond_to do |format|
-    if(params[:name].casecmp("sukenfenny") == 0 || params[:name].casecmp("fennysuken") == 0)
+    if(@lastFormName == "sukenfenny" || @lastFormName == "fennysuken" || @lastFormName == "SukenFenny" || @lastFormName == "FennySuken")
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
       Rails.logger.warn "Link: #{@link}"
       @data = {isCorrect:true, url: @link}
