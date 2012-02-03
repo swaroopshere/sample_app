@@ -42,9 +42,8 @@
 		<%= render "fbLogin"%>
 		<h1>Answers</h1>
 		<div class="tip_box">
-			<p>
-		The answers go here. Need a div element with updated answers
-		</p>
+			<div id="answers" name="answers" style="display:none;visibility:hidden">
+				</div>
 		</div>
 	</div>
 <script language="javascript">
@@ -58,10 +57,16 @@
 				, data: {id:<%= @question.id %>, answer: $("input[name='radioOption']:checked").val(), email: TreasureHunt.email}
 				, success: function(data){
 					if(data && data.isCorrect){
-						alert("Correct answer");
+						document.getElementById("answers").style.display="inline";
+						document.getElementById("answers").style.visibility="visible";
+						$("answers").update("Correct Answer!");
+						//alert("Correct answer");
 						window.location = data.url;
 					}else{
-						alert("wrong answer")
+						//alert("wrong answer")
+						document.getElementById("answers").style.display="inline";
+						document.getElementById("answers").style.visibility="visible";
+						$("answers").update("Wrong Answer!");
 					}
 				}
 				, error: function(error){
