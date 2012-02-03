@@ -3,6 +3,7 @@
 		Name: <input type="textbox" name="lastFormName">
 		<input type="submit" value="submit">
 	</form>
+	<div id="answers" name="answers">
 </div>
 <div class="right_content">
 	Initials from past answers:<br/>
@@ -11,3 +12,38 @@
 	<div name="youtubeLink">
 	</div>
 </div>
+<script language="javascript">
+	$(document).ready(function(){
+		$("#lastForm").click(function(){
+			document.getElementById("answers").style.display="none";
+			document.getElementById("answers").style.visibility="hidden";
+			$.ajax({
+				url:"/lastPage"
+				, type: "POST"
+				, dataType: "json"
+				, data: {names: $("input[name='textbox']").val(), email: TreasureHunt.email}
+				, success: function(data){
+					if(data && data.isCorrect){
+						document.getElementById("answers").style.display="inline";
+						document.getElementById("answers").style.visibility="visible";
+						document.getElementById("answers").innerHTML="<h3 style=\"color:#006600\">There you goo!! :) Now for the actual news, you will be redirected to a youtube video!. You will also be logged out of your Facebook account</h3>";
+						//alert("Correct answer");
+						//window.applicationCache.update();
+						window.location = data.url;
+					}else{
+						//alert("wrong answer")
+						document.getElementById("answers").style.display="inline";
+						document.getElementById("answers").style.visibility="visible";
+						document.getElementById("answers").innerHTML="<h3 style=\"color:#FF0000\">Nah.. try again.. </h3>";
+
+					}
+				}
+				, error: function(error){
+					alert("Error!");
+				}
+			});
+			
+		});
+	})
+	
+</script>
