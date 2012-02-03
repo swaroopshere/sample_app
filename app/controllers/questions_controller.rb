@@ -184,13 +184,15 @@ class QuestionsController < ApplicationController
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
       Rails.logger.warn "Link: #{@link}"
       @data = {isCorrect:true, url: @link}
-      format.json { render :json =>  @data }
+      #format.json { render :json =>  @data }
       #@data = {isCorrect:true, url: "http://www.youtube.com/watch?v=w3YOygfXTf4"} 
     else
       @data = {isCorrect:false, url: "/lastPage"}
-      format.json { render :json =>  @data }
+      
       #@data = {isCorrect:false, url: "/lastPage"}
     end
+    format.html 
+    format.json { render :json =>  @data }
   end
   end
 end
