@@ -1,6 +1,7 @@
 
 	<div class="left_content">
 		<p>
+			<div class="question_content" style="padding-left: 20px;">
 <p class = "questionText">
     <%= @question.sequencenumber %>: <%= @question.text %>
 </p>
@@ -28,6 +29,7 @@
 <br/>
 	<input id = "checkAnswerButton"type="button" name="checkAnswer" value="Check Answer" class="questionSubmitButton">
 	</p>
+	</div>
 	<% if not(@user.nil?) && @user.isAdmin %>
 	<nav class="round">
 	<%= link_to 'Edit', edit_question_path(@question) %> |
