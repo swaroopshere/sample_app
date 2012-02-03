@@ -181,7 +181,7 @@ class QuestionsController < ApplicationController
     @data
     respond_to do |format|
     if(@lastFormName == "sukenfenny" || @lastFormName == "fennysuken" || @lastFormName == "SukenFenny" || @lastFormName == "FennySuken")
-      @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
+      @link= "<iframe width=\"420\" height=\"315\" src=\"http://www.youtube.com/embed/w3YOygfXTf4\" frameborder=\"0\" allowfullscreen></iframe>"
       Rails.logger.warn "Link: #{@link}"
       @data = {isCorrect:true, url: @link}
       #format.json { render :json =>  @data }
