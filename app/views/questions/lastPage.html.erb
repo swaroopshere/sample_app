@@ -8,7 +8,7 @@
 	</form>
 	<div id="answers" name="answers">
 		<% if not(@lastFormName.nil?) %>
-			<% if not(@link.nil?) %>
+			<% if @link <=> "no" %>
 			   <h3 style=\"color:#FF0000\">Incorrect Answer!!</h3>
 			<% else%>
 			   <h3 style=\"color:#006600\">Correct Answer!!</h3>
@@ -29,10 +29,10 @@
 	<div name="initals">
 	</div>
 	<div name="youtubeLink">
-		<% if @link <=> "no" %>
-		<% else %>
+		<% if not(@link <=> "no") %>
 		<h1>Congratulations! you have reached your destination :) and now, enjoy your prize. Do not forget to turn on the volume on your speakers ;)</h1>
 		<%= link_to 'Treasure', @link %>
+		
 		<% end %>
 	</div>
 	</p>
