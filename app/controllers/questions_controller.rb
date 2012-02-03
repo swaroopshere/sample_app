@@ -150,11 +150,8 @@ class QuestionsController < ApplicationController
         @url = url_for(@nextQuestion)
         if(not(@nextQuestion.nil?))
           @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
-        else
-          redirect_to :action => 'lastPage'
-          return
         end
-        @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "http://www.youtube.com/watch?v=w3YOygfXTf4"}
+        @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "/lastPage"}
         format.json { render :json =>  @data }
         
       else
