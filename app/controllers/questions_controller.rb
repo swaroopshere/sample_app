@@ -183,5 +183,6 @@ class QuestionsController < ApplicationController
     @lastFormName = params[:lastFormName]
     if(@lastFormName <=> "sukenfenny" || @lastFormName <=> "fennysuken")
       redirect_to "http://www.youtube.com/watch?v=w3YOygfXTf4"
+    end
   end
 end
