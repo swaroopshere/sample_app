@@ -5,7 +5,8 @@
 <p class = "questionText">
     <%= @question.sequencenumber %>: <%= @question.text %>
 </p>
-
+<div id="answers" name="answers">
+	</div>
 <br/>
 <div class="optionsList">
 		<% if !@options.nil? %>
@@ -42,8 +43,7 @@
 		<%= render "fbLogin"%>
 		<h1>Answers</h1>
 		<div class="tip_box">
-			<div id="answers" name="answers">
-				</div>
+			
 		</div>
 	</div>
 <script language="javascript">
@@ -59,7 +59,7 @@
 					if(data && data.isCorrect){
 						document.getElementById("answers").style.display="inline";
 						document.getElementById("answers").style.visibility="visible";
-						document.getElementById("answers").innerHTML="<h3 style=\"color:#00FF00\">Correct Answer!!</h3>";
+						document.getElementById("answers").innerHTML="<h3 style=\"color:#006600\">Correct Answer!!</h3>";
 						//alert("Correct answer");
 						window.location = data.url;
 					}else{
