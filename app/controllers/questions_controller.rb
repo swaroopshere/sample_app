@@ -122,7 +122,7 @@ class QuestionsController < ApplicationController
   end
   
   def checkAnswer
-    #session[:answerString] || = {}
+    session[:answerString] ||= ""
     @question = Question.find(params[:id])
     @answer = @question.correctAnswer_id
     @userAnswer = Integer(params[:answer])
