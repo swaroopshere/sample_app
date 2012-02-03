@@ -178,19 +178,18 @@ class QuestionsController < ApplicationController
   
   def lastPage
     @lastFormName = params[:name]
+    @data
+    respond_to do |format|
     if(@lastFormName <=> "sukenfenny" || @lastFormName <=> "fennysuken")
       @link= "http://www.youtube.com/watch?v=w3YOygfXTf4"
       Rails.logger.warn "Link: #{@link}"
       @data = {isCorrect:true, url: @link}
-      
+      format.json { render :json =>  @data }
       #@data = {isCorrect:true, url: "http://www.youtube.com/watch?v=w3YOygfXTf4"} 
     else
       @data = {isCorrect:false, url: "/lastPage"}
-      #@data = {isCorrect:false, url: "/lastPage"}
-    end
-    respond_to do |format|
-      #format.html
       format.json { render :json =>  @data }
+      #@data = {isCorrect:false, url: "/lastPage"}
     end
   end
 end
