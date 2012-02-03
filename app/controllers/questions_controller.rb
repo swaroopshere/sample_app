@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @email = params[:email]
     @user = User.find_by_fbUser(params[:email])
+    @answerString=session[:answerString]
     Rails.logger.warn "Email received from request #{@email}"
     Rails.logger.warn "Login failed for user #{@user}"
     #@question = Question.find_by_text(params[:id])
