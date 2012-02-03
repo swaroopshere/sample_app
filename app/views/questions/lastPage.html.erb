@@ -21,7 +21,7 @@
 				url:"/lastPage"
 				, type: "POST"
 				, dataType: "json"
-				, data: {names: $("input[name='textbox']").val(), email: TreasureHunt.email}
+				, data: {names: $("input[name='lastFormName']").val(), email: TreasureHunt.email}
 				, success: function(data){
 					if(data && data.isCorrect){
 						document.getElementById("answers").style.display="inline";
