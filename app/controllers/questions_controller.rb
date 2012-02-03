@@ -132,9 +132,9 @@ class QuestionsController < ApplicationController
     @user.save
     @option=Option.find(@answer).text
     @answerString=@option[0]
-    logger.debug "AnswerString: #{@answerString}"
+    Rails.logger.warn "AnswerString: #{@answerString}"
     @sessionValue = session[:answerString]
-    logger.debug "Session value: #{@sessionValue}"
+    Rail.slogger.warn "Session value: #{@sessionValue}"
     
 
 
