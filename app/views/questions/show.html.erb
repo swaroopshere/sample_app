@@ -49,7 +49,8 @@
 <script language="javascript">
 	$(document).ready(function(){
 		$("#checkAnswerButton").click(function(){
-			
+			document.getElementById("answers").style.display="none";
+			document.getElementById("answers").style.visibility="hidden";
 			$.ajax({
 				url:"/checkAnswer"
 				, type: "POST"
