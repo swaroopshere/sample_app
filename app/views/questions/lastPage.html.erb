@@ -1,5 +1,5 @@
 <div class="left_content">
-	<form id="lastForm" name="lastForm" value="lastForm">
+	<form id="lastForm" name="lastForm" value="lastForm" action="/lastPage" method="POST">
 		Name: <input type="textbox" name="lastFormName">
 		<input id="lastFormSubmit" name="lastFormSubmit" type="submit" value="submit">
 	</form>
@@ -10,40 +10,9 @@
 	<div name="initals">
 	</div>
 	<div name="youtubeLink">
+		<% if not(@link.nil?)%>
+		<h1>Contratulations! you have reached your destination :) and now, enjoy your prize</h1>
+		<%= link_to 'Treasure', @link%>
+		<% end %>
 	</div>
 </div>
-<script language="javascript">
-	$(document).ready(function(){
-		$("#lastFormSubmit").click(function(){
-			document.getElementById("answers").style.display="none";
-			document.getElementById("answers").style.visibility="hidden";
-			$.ajax({
-				url:"/lastPage"
-				, type: "POST"
-				, dataType: "json"
-				, data: {names: $("input[name='lastFormName']").val(), email: TreasureHunt.email}
-				, success: function(data){
-					if(data && data.isCorrect){
-						document.getElementById("answers").style.display="inline";
-						document.getElementById("answers").style.visibility="visible";
-						document.getElementById("answers").innerHTML="<h3 style=\"color:#006600\">There you goo!! :) Now for the actual news, you will be redirected to a youtube video!. You will also be logged out of your Facebook account</h3>";
-						//alert("Correct answer");
-						//window.applicationCache.update();
-						window.location = data.url;
-					}else{
-						//alert("wrong answer")
-						document.getElementById("answers").style.display="inline";
-						document.getElementById("answers").style.visibility="visible";
-						document.getElementById("answers").innerHTML="<h3 style=\"color:#FF0000\">Nah.. try again.. </h3>";
-
-					}
-				}
-				, error: function(error){
-					alert("Error!");
-				}
-			});
-			
-		});
-	})
-	
-</script>
