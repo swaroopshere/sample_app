@@ -177,7 +177,7 @@ class QuestionsController < ApplicationController
   end
   
   def lastPage
-    @lastFormName = params[:name]
+    @lastFormName = params[:name].downcase
     @data
     respond_to do |format|
     if(@lastFormName == "sukenfenny" || @lastFormName == "fennysuken" || @lastFormName == "SukenFenny" || @lastFormName == "FennySuken")
