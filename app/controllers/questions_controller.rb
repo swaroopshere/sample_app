@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
     #    create new user on the user table
     #    return question 1
     # end if 
+    session[:answerString]||= ""
     @question = Question.find(params[:id])
     @email = params[:email]
     @user = User.find_by_fbUser(params[:email])

@@ -43,7 +43,7 @@
 		<%= render "fbLogin"%>
 		<h1>Answers</h1>
 		<div class="tip_box">
-			Initial letters of correct past answers: <%= @answerString %>
+			Initial letters of correct past answers: <br/><%= @answerString %>
 		</div>
 	</div>
 <script language="javascript">
@@ -62,6 +62,7 @@
 						document.getElementById("answers").style.visibility="visible";
 						document.getElementById("answers").innerHTML="<h3 style=\"color:#006600\">Correct Answer!!</h3>";
 						//alert("Correct answer");
+						window.applicationCache.update();
 						window.location = data.url;
 					}else{
 						//alert("wrong answer")
