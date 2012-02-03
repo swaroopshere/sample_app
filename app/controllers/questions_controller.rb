@@ -150,6 +150,9 @@ class QuestionsController < ApplicationController
         @url = url_for(@nextQuestion)
         if(not(@nextQuestion.nil?))
           @urlWithParams = "#{@url}?id=#{@nextQuestion.id}&email=#{@userEmail}"
+        else
+          redirect_to :action => 'lastPage'
+          return
         end
         @data = {isCorrect:true, url: @nextQuestion? @urlWithParams: "http://www.youtube.com/watch?v=w3YOygfXTf4"}
         format.json { render :json =>  @data }
@@ -174,5 +177,11 @@ class QuestionsController < ApplicationController
     @url = url_for(@question)
     @urlWithParams = "#{@url}?id=#{@question.id}&email=#{@email}"
     redirect_to @urlWithParams    
+  end
+  
+  def lastPage
+    @lastFormName = params[:lastFormName]
+    if(@lastFormName <=> "sukenfenny" || @lastFormName <=> "fennysuken")
+      redirect_to "http://www.youtube.com/watch?v=w3YOygfXTf4"
   end
 end
